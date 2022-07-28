@@ -13,7 +13,7 @@ export default function Preview() {
     }
 
     const getImage = async () => {
-        const image = await axios.get("https://api.ramcho.xyz/i/" + id, { withCredentials: true })
+        const image = await axios.get("http://localhost:5000/i/" + id, { withCredentials: true })
         if (!image.data.error) {
             setImgData(image.data)
         }
@@ -24,7 +24,6 @@ export default function Preview() {
     }, [])
 
     useEffect(() => {
-        timeout(100)
         setLoaded(true)
     }, [imgData])
 
@@ -34,22 +33,24 @@ export default function Preview() {
                 <>
                     <Helmet>
                         <title>ramcho.xyz</title>
-                        <meta property="og:title" content={imgData?.filename + '.' + imgData?.type.split("/")[1]} />
+                        <meta property="og:title" content={`${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
                         <meta property="og:site_name" content="ramcho.xyz" />
-                        <meta property="og:url" content={"https://ramcho.xyz/u/" + imgData?.filename} />
+                        <meta property="og:url" content={`https://ramcho.xyz/u/${imgData?.filename}`} />
                         <meta name="theme-color" content="#525bd1" />
-                        {imgData?.type.split("/")[0] === "video" ? (<>
-                            <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
-                            <meta property="og:type" content="video" />
-                        </>
-                        ) : (<>
-                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
-                            <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
-                            <meta property="og:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
-                            <meta property="og:image:width" content="400" />
-                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
-                            <meta content="summary_large_image" name="twitter:card" />
-                        </>)}
+                    </Helmet>
+                    {imgData?.type.split("/")[0] === "video" ? (<Helmet>
+                        <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta property="og:type" content="video" />
+                    </Helmet>
+                    ) : (<Helmet>
+                        <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta property="og:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta property="og:image:width" content="400" />
+                        <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta content="summary_large_image" name="twitter:card" />
+                    </Helmet>)}
+                    <Helmet>
                     </Helmet>
                     <div className="h-screen w-screen">
                         <div className="flex relative justify-center items-center h-full w-full">
@@ -74,7 +75,8 @@ export default function Preview() {
                         </div>
                     </div>
                 </>
-            ) : (<>wait</>)}
-        </div>
+            ) : (<>wait</>)
+            }
+        </div >
     )
 }
