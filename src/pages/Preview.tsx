@@ -13,7 +13,7 @@ export default function Preview() {
     }
 
     const getImage = async () => {
-        const image = await axios.get("https://ramcho.xyz/i/" + id, { withCredentials: true })
+        const image = await axios.get("https://api.ramcho.xyz/i/" + id, { withCredentials: true })
         if (!image.data.error) {
             setImgData(image.data)
         }
