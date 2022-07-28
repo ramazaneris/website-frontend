@@ -35,7 +35,21 @@ export default function Preview() {
                     <Helmet>
                         <title>ramcho.xyz</title>
                         <meta property="og:title" content={imgData?.filename + '.' + imgData?.type.split("/")[1]} />
-                        <meta property="og:"/>
+                        <meta property="og:site_name" content="ramcho.xyz" />
+                        <meta property="og:url" content={"https://ramcho.xyz/u/" + imgData?.filename} />
+                        <meta name="theme-color" content="#525bd1" />
+                        {imgData?.type.split("/")[0] === "video" ? (<>
+                            <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
+                            <meta property="og:type" content="video" />
+                        </>
+                        ) : (<>
+                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
+                            <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
+                            <meta property="og:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
+                            <meta property="og:image:width" content="400" />
+                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename + '.' + imgData?.type.split("/")[1]}`} />
+                            <meta content="summary_large_image" name="twitter:card" />
+                        </>)}
                     </Helmet>
                     <div className="h-screen w-screen">
                         <div className="flex relative justify-center items-center h-full w-full">
