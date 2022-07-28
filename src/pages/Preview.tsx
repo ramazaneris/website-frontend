@@ -57,12 +57,16 @@ export default function Preview() {
                             <div className="absolute">
                                 <div className="md:w-[500px] md:h-[500px] bg-[#00000050] rounded-lg">
                                     <div className="flex justify-center items-center h-full w-full">
-                                        <div className="absolute bg-black py-2 rounded-xl px-2">
+                                        <div className="absolute">
                                             {imgData ? (
                                                 <>
-                                                    <div className="p-2 text-white">{imgData?.filename + '.' + imgData?.type.split("/")[1]}</div>
-                                                    <div className="items-center mb-8">
-                                                        <img src={imgData?.url} className="max-w-[400px] w-[400px] max-h-[400px]" alt="" />
+                                                    <div className="bg-black py-2 rounded-xl px-2">
+                                                        <div className="p-2 text-white">
+                                                            {imgData?.filename + '.' + imgData?.type.split("/")[1]}
+                                                        </div>
+                                                        <div className="items-center mb-8">
+                                                            <img src={imgData?.url} className="max-w-[400px] w-[400px] max-h-[400px]" alt="" />
+                                                        </div>
                                                     </div>
                                                 </>
 
