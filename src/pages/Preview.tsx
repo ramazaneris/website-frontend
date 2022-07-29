@@ -2,37 +2,43 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
-export default function Preview(props: { getInfo: any }) {
+export default function Preview() {
     const { id } = useParams()
     const [imgData, setImgData] = useState<any>(null)
 
     const setImageData = async () => {
-        setImgData(await props.getInfo(id))
+
+        let image = await axios.get(`https://api.ramcho.xyz/i/${id}`)
+
+        setImgData(image.data)
     }
     useEffect(() => {
         setImageData()
     })
     return (
         <div>
-            {imgData && (<>
-                <Helmet>
-                    <meta property="og:title" content={`${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                    <meta property="og:url" content={`https://ramcho.xyz/u/${imgData?.filename}`} />
-                </Helmet>
-                {imgData?.type.split("/")[0] === "video" ? (
+            {imgData && (
+                <>
                     <Helmet>
-                        <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                        <meta property="og:type" content="video" />
+                        <meta property="og:title" content={`${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                        <meta property="og:url" content={`https://ramcho.xyz/u/${imgData?.filename}`} />
                     </Helmet>
-                ) : (<Helmet>
-                    <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                    <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                    <meta property="og:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                    <meta property="og:image:width" content="400" />
-                    <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                    <meta content="summary_large_image" name="twitter:card" />
-                </Helmet>)}
-            </>)}
+                    {imgData?.type.split("/")[0] === "video" ? (
+                        <Helmet>
+                            <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                            <meta property="og:type" content="video" />
+                        </Helmet>
+                    ) : (
+                        <Helmet>
+                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                            <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                            <meta property="og:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                            <meta property="og:image:width" content="400" />
+                            <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                            <meta content="summary_large_image" name="twitter:card" />
+                        </Helmet>)}
+                </>
+            )}
             <div className="h-screen w-screen">
                 <div className="flex relative justify-center items-center h-full w-full">
                     <div className="absolute">
@@ -50,7 +56,11 @@ export default function Preview(props: { getInfo: any }) {
                                                 </div>
                                             </div>
                                         </>
-                                    ) : (<>Image not found</>)}
+                                    ) : (
+                                        <>
+                                            Image not found
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
