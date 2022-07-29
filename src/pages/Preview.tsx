@@ -10,11 +10,13 @@ export default function Preview() {
 
         let image = await axios.get(`https://api.ramcho.xyz/i/${id}`)
 
+        if (image.data?.error) return
+
         setImgData(image.data)
     }
     useEffect(() => {
         setImageData()
-    })
+    }, [])
     return (
         <div>
             {imgData && (
