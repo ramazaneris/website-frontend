@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Preview from './pages/Preview'
 export default function Router() {
     const getInfo = async (value: any) => {
-        let image = await axios.get(`https//api.ramcho.xyz/i/${value}`)
+        let image = await axios.get("https//api.ramcho.xyz/i/" + value)
         return image.data
     }
     return (
