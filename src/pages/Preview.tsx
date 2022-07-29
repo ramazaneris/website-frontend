@@ -33,16 +33,14 @@ export default function Preview() {
                 <>
                     {imgData && (<>
                         <Helmet>
-                            <title>ramcho.xyz</title>
                             <meta property="og:title" content={`${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                            <meta property="og:site_name" content="ramcho.xyz" />
                             <meta property="og:url" content={`https://ramcho.xyz/u/${imgData?.filename}`} />
-                            <meta name="theme-color" content="#525bd1" />
                         </Helmet>
-                        {imgData?.type.split("/")[0] === "video" ? (<Helmet>
-                            <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
-                            <meta property="og:type" content="video" />
-                        </Helmet>
+                        {imgData?.type.split("/")[0] === "video" ? (
+                            <Helmet>
+                                <meta property="og:video" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
+                                <meta property="og:type" content="video" />
+                            </Helmet>
                         ) : (<Helmet>
                             <meta name="twitter:image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
                             <meta itemProp="image" content={`https://api.ramcho.xyz/u/${imgData?.filename}.${imgData?.type.split("/")[1]}`} />
