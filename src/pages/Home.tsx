@@ -6,8 +6,8 @@ export default function Home() {
     <div>
       <Helmet>
         <title>ramcho.xyz</title>
-        <meta property="og:description" content="ramcho.xyz created for Ramazan Eriş"/>
-        <meta name="theme-color" content="#525BD1"/>
+        <meta property="og:description" content="ramcho.xyz created for Ramazan Eriş" />
+        <meta name="theme-color" content="#525BD1" />
       </Helmet>
       <div className="h-screen w-screen">
         <div className="flex relative justify-center items-center h-full w-full">

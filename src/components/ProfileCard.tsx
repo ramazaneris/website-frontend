@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export default function ProfileCard() {
   return (
@@ -14,18 +13,18 @@ export default function ProfileCard() {
             <div>
               <p>Ramazan Eriş is a student in Turkey</p>
               <div>
-                <Link className="text-blue-700 font-bold" to="https://twitter.com/RmznEris?utm_source=ramcho.xyz">twitter/RmznEris</Link>
+                <a className="text-blue-700 font-bold" href="https://twitter.com/rmzneris?utm_source=ramcho.xyz" >twitter/RmznEris</a>
               </div>
               <div>
-                <Link className="text-blue-700 font-bold" to="https://instagram.com/ramazaneriss?utm_source=ramcho.xyz">instagram/@ramazaneriss</Link>
+                <a className="text-blue-700 font-bold" href="https://instagram.com/ramazaneriss?utm_source=ramcho.xyz">instagram/@ramazaneriss</a>
               </div>
               <div>
-                <Link className="text-blue-700 font-bold" to="https://github.com/ramazaneris?utm_source=ramcho.xyz">github/ramazaneris</Link>
+                <a className="text-blue-700 font-bold" href="https://github.com/ramazaneris?utm_source=ramcho.xyz">github/ramazaneris</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
