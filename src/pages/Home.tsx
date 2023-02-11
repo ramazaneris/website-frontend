@@ -1,12 +1,19 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import ProfileCard from '../components/ProfileCard'
+import React, { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
+import ProfileCard from "../components/ProfileCard";
 export default function Home() {
+  const ref = useRef(null);
+  useEffect(() => {
+  }, []);
   return (
     <div>
       <Helmet>
         <title>ramcho.xyz</title>
-        <meta property="og:description" content="ramcho.xyz created for Ramazan Eriş" />
+        <link rel="icon" href="https://apiramco.vercel.app/cdn/r9m9x0ob8n.png" type="image/png" sizes="16x16" />
+        <meta
+          property="og:description"
+          content="ramcho.xyz created for Ramazan Eriş"
+        />
         <meta name="theme-color" content="#525BD1" />
       </Helmet>
       <div className="h-screen w-screen">
@@ -16,7 +23,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
