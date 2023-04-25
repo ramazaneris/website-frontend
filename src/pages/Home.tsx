@@ -9,10 +9,10 @@ export default function Home() {
     <div>
       <Helmet>
         <title>ramcho.xyz</title>
-        <link rel="icon" href="https://apiramco.vercel.app/cdn/r9m9x0ob8n.png" type="image/png" sizes="16x16" />
+        <link rel="icon" href="https://api.mbps.tk/cdn/kci2whj64s.jpeg" type="image/png" sizes="16x16" />
         <meta
           property="og:description"
-          content="ramcho.xyz created for Ramazan Eriş"
+          content="Ramazan Eriş"
         />
         <meta name="theme-color" content="#525BD1" />
       </Helmet>
