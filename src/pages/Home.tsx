@@ -9,7 +9,7 @@ export default function Home() {
     <div>
       <Helmet>
         <title>ramcho.xyz</title>
-        <link rel="icon" href="https://api.mbps.tk/cdn/kci2whj64s.jpeg" type="image/png" sizes="16x16" />
+        <link rel="icon" href="https://cdn.ramco.mbps.tk/cdn/kci2whj64s.jpeg" type="image/png" sizes="16x16" />
         <meta
           property="og:description"
           content="Ramazan Eriş"
